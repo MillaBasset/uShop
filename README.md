@@ -19,7 +19,11 @@ To download:
 
     $ ./ushop.py <titleid> [version]
 
+## But where can I find title IDs?
+- Doing a [Google](https://lmgtfy.app/?q=wii+u+title+ids)
+- https://wiiubrew.org/wiki/Title_database
+
 ## Credits
-[ihaveamac](https://github.com/ihaveamac) for his [wiiu-things](https://github.com/ihaveamac/wiiu-things) repository.  
-[dojafoja](https://github.com/dojafoja) for his [Kii-U-Generator](https://github.com/dojafoja/Kii-U-Generator).  
-[TimmSkiller](https://github.com/TimmSkiller) for figuring out that the Wii U uses the same ticket structure as the 3DS, and making a utility to generate tickets for me.
+- [ihaveamac](https://github.com/ihaveamac) for his [wiiu-things](https://github.com/ihaveamac/wiiu-things) repository.  
+- [dojafoja](https://github.com/dojafoja) for his [Kii-U-Generator](https://github.com/dojafoja/Kii-U-Generator).  
+- [TimmSkiller](https://github.com/TimmSkiller) for figuring out that the Wii U uses the same ticket structure as the 3DS, and making a utility to generate tickets for me.
