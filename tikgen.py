@@ -4,8 +4,10 @@ import os
 import binascii
 
 def main(tid):
+    print("Generating title.tik...")
+
     ckey = keygen.get_ckey()
-    
+
     tik = open('basetik.tik', 'rb')
 
     baseTik = io.BytesIO(tik.read())
