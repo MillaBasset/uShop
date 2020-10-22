@@ -5,7 +5,8 @@ import keygen
 
 if not keygen.verify_ckey():
     print("The common key is invalid.")
-    print("To use this tool, you must have the common key in ckey.txt, with the key being in the first line.")
+    print("To use this tool, you must have the common key in ckey.txt,")
+    print("with the key being in the first line.")
 elif len(sys.argv) == 1 or len(sys.argv[1]) != 16:
     print("Invalid or missing Title ID.")
     print(f"Usage: ushop.py (Title ID) [version]")
