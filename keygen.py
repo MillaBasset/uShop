@@ -31,7 +31,7 @@ def get_ckey() -> str:
         print("The common key was not found.")
         print("Please create a file called ckey.txt,")
         print("and write the common key in the first line.")
-        sys.exit(0)
+        sys.exit(1)
 
     with open('ckey.txt', 'r') as f:
         return f.readline().replace('\r', '').replace('\n', '')
