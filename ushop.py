@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import wiiu_cdndownload
-import subprocess
 import sys
 import keygen
 
