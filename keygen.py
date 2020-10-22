@@ -28,7 +28,9 @@ def generate_key(title_id, pwd):
 
 def get_ckey() -> str:
     if not os.path.exists('ckey.txt'):
-        print('Common key was not found. Please create a file called ckey.txt and write the cmmon key in the first line.')
+        print("The common key was not found.")
+        print("Please create a file called ckey.txt,")
+        print("and write the common key in the first line.")
         sys.exit(0)
 
     with open('ckey.txt', 'r') as f:
@@ -39,4 +41,4 @@ def verify_ckey():
         return True
 
 def main(tid, password='mypass'):
-    return generate_key(tid, password);
+    return generate_key(tid, password)
