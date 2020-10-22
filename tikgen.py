@@ -3,28 +3,13 @@ import io
 import os
 import binascii
 
-def main(tid):
-    print("Generating title.tik...")
+def main(tid, path):
+    print(f"Generating title.tik for Title ID {tid}...")
 
-    ckey = keygen.get_ckey()
-
-    tik = open('basetik.tik', 'rb')
-
-    baseTik = io.BytesIO(tik.read())
-
-    tik.close()
-
-    keys = keygen.main(tid, ckey)
-
-    currentTik = baseTik
-    currentTik.seek(0x1BF)
-    currentTik.write(binascii.unhexlify(keys[0]))
-    currentTik.seek(0x1DC)
-    currentTik.write(binascii.unhexlify(tid))
-
-    os.mkdir(tid)
-    a = open(f"{tid}/title.tik", 'wb+')
-
-    currentTik.seek(0)
-    a.write(currentTik.read())
-    a.close()
+    with open(f"{path}/title.tik", 'wb+') as outputTik:
+        with open('basetik.tik', 'rb') as tik:
+            outputTik.write(tik.read())
+            outputTik.seek(0x1BF)
+            outputTik.write(binascii.unhexlify(keygen.main(tid)))
+            outputTik.seek(0x1DC)
+            outputTik.write(binascii.unhexlify(tid))
