@@ -1,6 +1,4 @@
 import keygen
-import io
-import os
 import binascii
 
 def main(tid, path):
