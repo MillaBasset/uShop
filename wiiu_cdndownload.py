@@ -45,7 +45,7 @@ def runDownload(tid: str, version: str = ''):
             print(f"Error when trying to download ticket - System title {tid} may not be available on CDN")
             print(f"Error: {e}")
             shutil.rmtree(os.path.join(os.getcwd(), tid), ignore_errors = True)
-            sys.exit(0)
+            sys.exit(1)
     else:
         tikgen.main(tid, os.path.join(os.getcwd(), tid))
 
