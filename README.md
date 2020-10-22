@@ -16,7 +16,7 @@ Also, Python 3.5+ (?) and pycryptodome are requirements to use this program. Ins
 
 To download:
 
-    $ ./ushop.py <titleid> [version]
+    $ ./ushop.py (Title ID) [version]
 
 Please do not use this tool to download games you do not own.  
 I, the creator of uShop, am not responsible for the activity of the user.
