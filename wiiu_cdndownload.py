@@ -25,7 +25,7 @@ systitle_categories = {
 }
 
 
-def runDownload(tid: str, version: str = ''):
+def runDownload(tid: str, gui_label: object = None, version: str = ''):
     tid = tid.upper()
     sysbase = 'http://nus.cdn.c.shop.nintendowifi.net/ccs/download/' + tid
     appbase = 'http://ccs.cdn.c.shop.nintendowifi.net/ccs/download/' + tid
@@ -44,6 +44,8 @@ def runDownload(tid: str, version: str = ''):
         except Exception as e:
             print(f"Error when trying to download ticket - System title {tid} may not be available on CDN")
             print(f"Error: {e}")
+            if gui_label is not None:
+                gui_label.setText(str(e))
             shutil.rmtree(os.path.join(os.getcwd(), tid), ignore_errors = True)
             sys.exit(1)
     else:
@@ -84,16 +86,19 @@ def runDownload(tid: str, version: str = ''):
         else:
             with open(tid + '/' + c[0] + '.app', 'wb') as f:
                 download(base + '/' + c[0], True, f, 'Downloading: {}.app...'.format(
-                    c[0]), '({}) MiB)'.format(c[2] / (1024 ** 2)))
+                    c[0]), '({}) MiB)'.format(c[2] / (1024 ** 2)), gui_label = gui_label)
         if c[1] & 0x2:
             with open(tid + '/' + c[0] + '.h3', 'wb') as f:
                 download(base + '/' + c[0] + '.h3', True,
-                         f, 'Downloading: {}.h3...'.format(c[0]))
+                         f, 'Downloading: {}.h3...'.format(c[0]), gui_label = gui_label)
+    
+    if gui_label is not None:
+        gui_label.setText(f'Download finished: {tid}')
 
 # some things used from
 # http://stackoverflow.com/questions/13881092/download-progressbar-for-python-3
 
-def download(url, printprogress=False, outfile=None, message_prefix='', message_suffix=''):
+def download(url, printprogress=True, outfile=None, message_prefix='', message_suffix='', gui_label=None):
     cn = urlopen(url)
     totalsize = int(cn.headers['content-length'])
     totalread = 0
@@ -105,12 +110,16 @@ def download(url, printprogress=False, outfile=None, message_prefix='', message_
         totalread += toread
         if printprogress:
             percent = min(totalread * 1e2 / totalsize, 1e2)
-            print('\r{:29} {:>5.1f}% {:>10} / {:>10} {}'.format(message_prefix, percent, totalread, totalsize, message_suffix), end='')
+            if gui_label is not None:
+                if message_prefix != gui_label.text():
+                    gui_label.setText(message_prefix)
+            else:
+                print('\r{:29} {:>5.1f}% {:>10} / {:>10} {}'.format(message_prefix, percent, totalread, totalsize, message_suffix), end='')
         if outfile:
             outfile.write(co)
         else:
             ct += co
-    if printprogress:
+    if printprogress and gui_label is None:
         print('')
     if not outfile:
         return ct
