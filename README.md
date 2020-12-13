@@ -21,6 +21,12 @@ To download:
 Please do not use this tool to download games you do not own.  
 I, the creator of uShop, am not responsible for the activity of the user.
 
+## GUI
+
+There's also a GUI now! Run this command to access it:
+
+    $ ./ushop_gui.py
+
 ## But where can I find title IDs?
 - Doing a [Google](https://lmgtfy.app/?q=wii+u+title+ids)
 - https://wiiubrew.org/wiki/Title_database
