@@ -9,7 +9,7 @@ if not keygen.verify_ckey():
     print("with the key being in the first line.")
 elif len(sys.argv) == 1 or len(sys.argv[1]) != 16:
     print("Invalid or missing Title ID.")
-    print(f"Usage: ushop.py (Title ID) [version]")
+    print(f"Usage: {sys.argv[0]} (Title ID) [version]")
     sys.exit(1)
 else:
     if len(sys.argv) == 2:
